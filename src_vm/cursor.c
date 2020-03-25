@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cursor.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: student <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/25 12:33:29 by student           #+#    #+#             */
+/*   Updated: 2020/03/25 12:33:39 by student          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
 t_cursor	*cursor_list_new(int position, int cursor_id, int player_id)
 {
 	t_cursor	*new;
-	int		i;
+	int			i;
 
 	if (!(new = (t_cursor*)malloc(sizeof(t_cursor))))
 		return (NULL);

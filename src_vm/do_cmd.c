@@ -1,9 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   do_cmd.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: student <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/25 12:27:57 by student           #+#    #+#             */
+/*   Updated: 2020/03/25 12:31:27 by student          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
-int	do_cmd_w_args(unsigned char *mem, t_cursor *cursor, t_cmd_info *info, t_game_info *game_info)
+int	do_cmd_w_args(
+		unsigned char *mem,
+		t_cursor *cursor,
+		t_cmd_info *info,
+		t_game_info *game_info)
 {
-	if (LOG_MODE)
-		ft_printf("(%d) ", cursor->cursor_id);
 	if (cursor->command == 0x02)
 		(cmd_ld(mem, cursor, info));
 	else if (cursor->command == 0x03)

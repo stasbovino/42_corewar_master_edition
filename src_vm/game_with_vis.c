@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   game_with_vis.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: student <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/25 12:08:36 by student           #+#    #+#             */
+/*   Updated: 2020/03/25 12:09:39 by student          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
-static void	init_game(t_game_info *game, 
+static void	init_game(t_game_info *game,
 		t_cursor **cursor_list, unsigned char *mem, t_champ *champs)
 {
 	game->current_cycle = 1;
@@ -24,9 +36,9 @@ static void	init_game(t_game_info *game,
 
 static void	re_name(t_champ *champs, int n)
 {
-	int i;
-	int j;
-	char *s;
+	int		i;
+	int		j;
+	char	*s;
 
 	i = 0;
 	while (i < n)
@@ -71,7 +83,7 @@ static void	check_cycles_to_die(t_game_info *game)
 	++game->current_cycle;
 }
 
-int			start_game_vis(unsigned char *mem, t_cursor **cursor_list, 
+int			start_game_vis(unsigned char *mem, t_cursor **cursor_list,
 		t_flags *flags, t_champ *champs)
 {
 	t_game_info	game;

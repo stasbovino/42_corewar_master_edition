@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_vm.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: student <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/25 12:19:53 by student           #+#    #+#             */
+/*   Updated: 2020/03/25 12:20:05 by student          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
-static void	mem_buff_stringadd(unsigned char *mem, unsigned char *str, 
+static void	mem_buff_stringadd(unsigned char *mem, unsigned char *str,
 		int index, int str_len)
 {
 	int	bytes_before_end;

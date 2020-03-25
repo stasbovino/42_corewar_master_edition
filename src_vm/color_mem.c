@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   color_mem.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: student <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/25 13:02:21 by student           #+#    #+#             */
+/*   Updated: 2020/03/25 13:02:31 by student          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
 unsigned char	*color_mem_init(int n_players, t_champ *champs)
@@ -18,7 +30,7 @@ unsigned char	*color_mem_init(int n_players, t_champ *champs)
 	return (color_mem);
 }
 
-void		change_color_mem(int place, int size,
+void			change_color_mem(int place, int size,
 		unsigned char *c_mem, unsigned char player_color)
 {
 	int	start;

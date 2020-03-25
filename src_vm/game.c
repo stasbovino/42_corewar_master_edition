@@ -1,6 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   game.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: student <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/25 12:20:45 by student           #+#    #+#             */
+/*   Updated: 2020/03/25 12:22:37 by student          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
-static void	init_game(t_game_info *game, t_cursor **cursor_list, t_flags *flags, unsigned char *mem)
+static void	init_game(t_game_info *game, t_cursor **cursor_list,
+		t_flags *flags, unsigned char *mem)
 {
 	game->current_cycle = 1;
 	game->cycles_to_die = CYCLE_TO_DIE;
@@ -23,7 +36,8 @@ static void	print_regs(t_cursor *cursor_list)
 	i = 1;
 	while (cursor_list)
 	{
-		ft_printf("player %d, pos %d: ", cursor_list->player_id, cursor_list->position);
+		ft_printf("player %d, pos %d: ",
+				cursor_list->player_id, cursor_list->position);
 		while (i <= REG_NUMBER)
 		{
 			ft_printf("[%d] ", cursor_list->r[i]);
@@ -44,7 +58,8 @@ static void	test(t_game_info game, t_cursor *cursor_list, unsigned char *mem)
 	print_regs(cursor_list);
 }
 
-int	start_game(unsigned char *mem, t_cursor **cursor_list, t_flags *flags)
+int			start_game(unsigned char *mem,
+		t_cursor **cursor_list, t_flags *flags)
 {
 	t_game_info	game;
 

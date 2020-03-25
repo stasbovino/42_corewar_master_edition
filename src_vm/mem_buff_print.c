@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   mem_buff_print.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: student <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/25 11:56:17 by student           #+#    #+#             */
+/*   Updated: 2020/03/25 12:04:00 by student          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
 void			mem_buff_print(unsigned char *mem, int row)
@@ -56,7 +68,7 @@ static char		*select_color(t_cursor *cursor, int index)
 	return (NULL);
 }
 
-void			mem_buff_print_w_cur(unsigned char *mem, 
+void			mem_buff_print_w_cur(unsigned char *mem,
 		t_cursor *cursor, int row)
 {
 	int i;
@@ -67,7 +79,7 @@ void			mem_buff_print_w_cur(unsigned char *mem,
 	{
 		if (cursor && is_cur_position(cursor, i))
 			ft_printf("%s%.2hhx\033[0m ", select_color(cursor, i), mem[i]);
-		else	
+		else
 			ft_printf("%.2hhx ", mem[i]);
 		++i;
 		if (i % row == 0 && i < MEM_SIZE)

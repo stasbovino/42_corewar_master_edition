@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fill.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: student <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/25 12:24:34 by student           #+#    #+#             */
+/*   Updated: 2020/03/25 12:25:40 by student          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
 int		fill_sizeof_code(unsigned char data[])
@@ -32,8 +44,8 @@ void	check_errno(int fd, char *file)
 
 void	fill_champ(t_champ *champ, char *file)
 {
-	int fd;
-	unsigned char data[DATA_SIZE];
+	int				fd;
+	unsigned char	data[DATA_SIZE];
 
 	fd = open(file, O_RDONLY);
 	check_errno(fd, file);
@@ -41,7 +53,7 @@ void	fill_champ(t_champ *champ, char *file)
 	check_errno(fd, file);
 	check_valid_data(data, file);
 	ft_strncpy(champ->name, (char*)(data + 4), PROG_NAME_LENGTH);
-	ft_strncpy(champ->comment, 
+	ft_strncpy(champ->comment,
 			(char*)(data + 4 + PROG_NAME_LENGTH + 4 + 4), COMMENT_LENGTH);
 	champ->sizeof_code = fill_sizeof_code(data);
 	if (champ->sizeof_code == -1)

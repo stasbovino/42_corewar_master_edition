@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cmd_and_or_xor.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: student <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/25 13:12:13 by student           #+#    #+#             */
+/*   Updated: 2020/03/25 13:13:24 by student          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
 void		cmd_and(unsigned char *mem, t_cursor *cursor, t_cmd_info *cmd_info)
-{	
-	long int	arg_info1;
-	long int	arg_info2;
+{
+	long int		arg_info1;
+	long int		arg_info2;
 	unsigned char	t_reg;
-	int		pos;
+	int				pos;
 
 	if (LOG_MODE)
 		ft_printf("CMD_and\n");
@@ -28,10 +40,10 @@ void		cmd_and(unsigned char *mem, t_cursor *cursor, t_cmd_info *cmd_info)
 
 void		cmd_or(unsigned char *mem, t_cursor *cursor, t_cmd_info *cmd_info)
 {
-	long int	arg_info1;
-	long int	arg_info2;
+	long int		arg_info1;
+	long int		arg_info2;
 	unsigned char	t_reg;
-	int		pos;
+	int				pos;
 
 	if (LOG_MODE)
 		ft_printf("CMD_or\n");
@@ -46,7 +58,7 @@ void		cmd_or(unsigned char *mem, t_cursor *cursor, t_cmd_info *cmd_info)
 	if (!is_right_reg(t_reg))
 		return ;
 	cursor->r[t_reg] = arg_info1 | arg_info2;
-	if (cursor->r[t_reg] == 0) 
+	if (cursor->r[t_reg] == 0)
 		cursor->carry = 1;
 	else
 		cursor->carry = 0;
@@ -54,10 +66,10 @@ void		cmd_or(unsigned char *mem, t_cursor *cursor, t_cmd_info *cmd_info)
 
 void		cmd_xor(unsigned char *mem, t_cursor *cursor, t_cmd_info *cmd_info)
 {
-	long int	arg_info1;
-	long int	arg_info2;
+	long int		arg_info1;
+	long int		arg_info2;
 	unsigned char	t_reg;
-	int		pos;
+	int				pos;
 
 	if (LOG_MODE)
 		ft_printf("CMD_xor\n");
@@ -72,7 +84,7 @@ void		cmd_xor(unsigned char *mem, t_cursor *cursor, t_cmd_info *cmd_info)
 	if (!is_right_reg(t_reg))
 		return ;
 	cursor->r[t_reg] = arg_info1 ^ arg_info2;
-	if (cursor->r[t_reg] == 0) 
+	if (cursor->r[t_reg] == 0)
 		cursor->carry = 1;
 	else
 		cursor->carry = 0;

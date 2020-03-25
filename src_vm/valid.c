@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   valid.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: student <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/25 12:04:30 by student           #+#    #+#             */
+/*   Updated: 2020/03/25 12:08:02 by student          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
 void	check_header(unsigned char data[], char *file)
 {
-	unsigned char *a;
-	int i;
-	int j;
-	int need;
+	unsigned char	*a;
+	int				i;
+	int				j;
+	int				need;
 
 	i = 3;
 	j = 0;

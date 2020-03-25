@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: student <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/25 13:09:47 by student           #+#    #+#             */
+/*   Updated: 2020/03/25 13:11:52 by student          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
-int	is_dead(t_cursor *cursor, int cycles_to_die, int current_cycle)
+int		is_dead(t_cursor *cursor, int cycles_to_die, int current_cycle)
 {
 	if (cycles_to_die <= 0)
 		return (1);
@@ -9,11 +21,12 @@ int	is_dead(t_cursor *cursor, int cycles_to_die, int current_cycle)
 	return (0);
 }
 
-void	check_cursor_list(t_cursor **cursor_list, int cycles_to_die, t_game_info *game)
+void	check_cursor_list(t_cursor **cursor_list,
+		int cycles_to_die, t_game_info *game)
 {
 	t_cursor	*prev;
 	t_cursor	*tmp;
-	
+
 	prev = NULL;
 	tmp = NULL;
 	if (cursor_list)
@@ -33,7 +46,7 @@ void	check_cursor_list(t_cursor **cursor_list, int cycles_to_die, t_game_info *g
 	}
 }
 
-int	do_check(t_cursor **cursor_list, int *cycles_to_die, t_game_info *game)
+int		do_check(t_cursor **cursor_list, int *cycles_to_die, t_game_info *game)
 {
 	static int	n_checks = 0;
 

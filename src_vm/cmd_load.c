@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cmd_load.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: student <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/25 12:56:49 by student           #+#    #+#             */
+/*   Updated: 2020/03/25 12:57:03 by student          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
 int	load_arg_info(unsigned char *mem, unsigned char arg, long int *arg_info, int *pos, t_cursor *cursor)
@@ -35,9 +47,9 @@ int	load_arg_info(unsigned char *mem, unsigned char arg, long int *arg_info, int
 
 int	load_arg_info2(unsigned char *mem, unsigned char arg, long int *arg_info, int *pos, t_cursor *cursor)
 {
-	short int	t_ind;
+	short int		t_ind;
 	unsigned char	t_reg;
-	int		tmp_pos;
+	int				tmp_pos;
 
 	if (arg == DIR_CODE)
 	{
@@ -46,7 +58,7 @@ int	load_arg_info2(unsigned char *mem, unsigned char arg, long int *arg_info, in
 		(*pos) %= MEM_SIZE;
 	}
 	else if (arg == IND_CODE)
-	{	
+	{
 		t_ind = get_t_dir2(mem, *pos);
 		tmp_pos = correct_pos(cursor->position + (t_ind % IDX_MOD));
 		tmp_pos %= MEM_SIZE;
