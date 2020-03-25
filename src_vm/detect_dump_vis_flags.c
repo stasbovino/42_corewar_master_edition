@@ -6,7 +6,7 @@
 /*   By: student <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 12:32:54 by student           #+#    #+#             */
-/*   Updated: 2020/03/25 12:33:09 by student          ###   ########.fr       */
+/*   Updated: 2020/03/25 04:59:46 by sts              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,11 @@ void		detect_dump_vis(int argc, char **argv, t_flags *flags, char *tmp)
 			else if (ft_strequ(argv[i], "-vis"))
 			{
 				flags->visual = 1;
+				tmp[i] = 1;
+			}
+			else if (ft_strequ(argv[i], "-aff") || ft_strequ(argv[i], "-a"))
+			{
+				flags->aff = 1;
 				tmp[i] = 1;
 			}
 		}

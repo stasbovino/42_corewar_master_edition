@@ -6,7 +6,7 @@
 /*   By: student <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 12:08:36 by student           #+#    #+#             */
-/*   Updated: 2020/03/25 12:09:39 by student          ###   ########.fr       */
+/*   Updated: 2020/03/25 05:21:33 by sts              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,11 @@ static void	init_game(t_game_info *game,
 	game->live_count = 0;
 	game->n_cursors = game->n_players;
 	game->next_cur_id = game->n_players + 1;
-	game->color_mem = color_mem_init(game->n_players, champs);
+	if (!(game->color_mem = color_mem_init(game->n_players, champs)))
+		free_game_exit(game, &mem);
 	game->visual.pause = 1;
 	game->visual.game_over = 0;
+	game->visual.win_main = NULL;
 	game->visual.win_field = NULL;
 	game->visual.win_info = NULL;
 	game->visual.last_press = -1;
@@ -87,24 +89,22 @@ int			start_game_vis(unsigned char *mem, t_cursor **cursor_list,
 		t_flags *flags, t_champ *champs)
 {
 	t_game_info	game;
-	int			i;
 
 	game.n_players = flags->count;
 	re_name(champs, game.n_players);
 	init_game(&game, cursor_list, mem, champs);
-	init_ncurses(&(game.visual), &game, game.visual.mem, game.orig_cursor_list);
+	if (init_ncurses(&(game.visual), &game, mem, cursor_list))
+		free_game_exit(&game, &mem);
 	draw(&game);
 	while ((game.visual.last_press = getch()) != 27)
 	{
 		if (check_pause(&game))
 			continue;
 		if (do_cycle(game.visual.mem, &game) == 0)
-		{
-			game.visual.pause = 1;
 			break ;
-		}
 		check_cycles_to_die(&game);
 		draw(&game);
 	}
+	free_game(cursor_list, &game, &mem);
 	return (0);
 }

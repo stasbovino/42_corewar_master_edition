@@ -6,15 +6,16 @@
 #    By: gwyman-m <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/28 18:26:57 by gwyman-m          #+#    #+#              #
-#    Updated: 2020/03/24 12:59:10 by sts              ###   ########.fr        #
+#    Updated: 2020/03/25 05:18:40 by sts              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 ASM=asm
 VM=corewar
 
-FLAGS = -g -O2 -I includes/ -I libft/
+FLAGS = -g -O2
 LIB = -L libft/ -lft -lncurses
+INC = -I includes/ -I libft/
 
 ASM_DIR=src_asm/
 VM_DIR=src_vm/
@@ -35,7 +36,9 @@ VM_CFILES= check.c cmd_add_sub.c cmd_and_or_xor.c cmd_fork.c cmd_funcs.c \
 		   detect_dump_vis_flags.c detect_flags.c detect_n_flag.c do_cmd.c \
 		   draw.c error_usage.c fill.c game.c game_with_vis.c \
 		   init_champs.c init_ncurses.c init_vm.c main.c mem_buff_print.c \
-		   memory_buffer.c valid.c color_mem.c free_game.c
+		   memory_buffer.c valid.c color_mem.c free_game.c perform_command.c \
+		   load_cmd_info.c count_shift.c \
+
 
 ASM_OFILES= $(ASM_CFILES:%.c=%.o)
 VM_OFILES= $(VM_CFILES:%.c=%.o)
@@ -58,13 +61,13 @@ $(ASM): $(LIBFT) $(ASM_OBJ)
 	clang $(FLAGS) $(ASM_OBJ) -o $(ASM) $(LIB)
 
 src_asm/%.o: src_asm/%.c $(HEADER_ASM)
-	clang -c $(FLAGS) $< -o $@
+	clang -c $(FLAGS) $(INC) $< -o $@
 
 $(VM): $(LIBFT) $(VM_OBJ)
 	clang $(FLAGS) $(VM_OBJ) -o $(VM) $(LIB)
 
 src_vm/%.o: src_vm/%.c $(HEADER_VM)
-	clang -c $(FLAGS) $< -o $@
+	clang -c $(FLAGS) $(INC) $< -o $@
 
 #	@printf "\033[0;32mcorwar files are ready                        \033[0m\n"
 #	@printf "\e[?25h\033[0;32mcorwar is ready\033[0m\n"

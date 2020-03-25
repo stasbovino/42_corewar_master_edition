@@ -6,7 +6,7 @@
 /*   By: student <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 12:20:45 by student           #+#    #+#             */
-/*   Updated: 2020/03/25 12:22:37 by student          ###   ########.fr       */
+/*   Updated: 2020/03/25 05:04:10 by sts              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,35 +27,9 @@ static void	init_game(t_game_info *game, t_cursor **cursor_list,
 	game->n_players = flags->count;
 	game->n_cursors = game->n_players;
 	game->next_cur_id = game->n_players + 1;
-}
-
-static void	print_regs(t_cursor *cursor_list)
-{
-	int i;
-
-	i = 1;
-	while (cursor_list)
-	{
-		ft_printf("player %d, pos %d: ",
-				cursor_list->player_id, cursor_list->position);
-		while (i <= REG_NUMBER)
-		{
-			ft_printf("[%d] ", cursor_list->r[i]);
-			i++;
-		}
-		i = 1;
-		cursor_list = cursor_list->next;
-		ft_printf("\n");
-	}
-}
-
-static void	test(t_game_info game, t_cursor *cursor_list, unsigned char *mem)
-{
-	mem_buff_print_w_cur(mem, cursor_list, 32);
-	ft_printf("curr: %d\n", game.current_cycle);
-	ft_printf("last alive: %d\n", game.last_alive);
-	ft_printf("live count: %d\n", game.live_count);
-	print_regs(cursor_list);
+	game->visual.win_main = NULL;
+	game->visual.win_field = NULL;
+	game->visual.win_info = NULL;
 }
 
 int			start_game(unsigned char *mem,

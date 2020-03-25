@@ -6,13 +6,14 @@
 /*   By: gwyman-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 17:23:19 by gwyman-m          #+#    #+#             */
-/*   Updated: 2020/03/24 12:55:56 by sts              ###   ########.fr       */
+/*   Updated: 2020/03/25 05:19:57 by sts              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef COREWAR_H
 # define COREWAR_H
 
+# include <ncurses.h>
 # include "libft.h"
 # include "op.h"
 # include <fcntl.h>
@@ -22,7 +23,6 @@
 # include <unistd.h>
 # include <sys/types.h>
 # include <sys/uio.h>
-# include <ncurses.h>
 
 typedef struct		s_champ
 {
@@ -72,6 +72,7 @@ typedef struct		s_ncurses
 {
 	char pause;
 	char game_over;
+	WINDOW *win_main;
 	WINDOW *win_field;
 	WINDOW *win_info;
 	int last_press;
@@ -166,6 +167,19 @@ void			cursor_change_position(t_cursor *list, int shift);
 /* cycle.c */ 
 
 int				do_cycle(unsigned char *memory, t_game_info *info);
+
+/* perform_command.c */
+
+void			perform_command(unsigned char *mem, t_cursor *cursor,
+		t_game_info *game_info);
+
+/* load_cmd_info.c */
+
+int				load_cmd_info(t_cmd_info *info, unsigned char *mem,
+		t_cursor *cursor);
+
+/* count_shift.c */
+
 int				count_shift(t_cmd_info *cmd_info);
 
 /* check.c */
@@ -178,16 +192,18 @@ void			draw(t_game_info *game);
 
 /* init_ncurses.c */
 
-void			init_ncurses(t_ncurses *visual, t_game_info *game, unsigned char *mem,
-			t_cursor **cursor_list);
+int				init_ncurses(t_ncurses *visual, t_game_info *game, 
+		unsigned char *mem, t_cursor **cursor_list);
 
 /* game.c */
 
-int				start_game(unsigned char *memory, t_cursor **cursor_list, t_flags *flags);
+int				start_game(unsigned char *memory, t_cursor **cursor_list, 
+		t_flags *flags);
 
 /* game_with_vis.c */
 
-int				start_game_vis(unsigned char *memory, t_cursor **cursor_list, t_flags *flags, t_champ *champs);
+int				start_game_vis(unsigned char *memory, t_cursor **cursor_list, 
+		t_flags *flags, t_champ *champs);
 
 /* do_cmd */
 
@@ -240,5 +256,6 @@ void			load_from_reg(int reg_info, unsigned char *mem, int place);
 /* free_game.c */
 
 void			free_game(t_cursor **cursor_list, t_game_info *game, unsigned char **mem);	
+void			free_game_exit(t_game_info *game, unsigned char **mem);
 
 #endif

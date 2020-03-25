@@ -56,7 +56,7 @@ t_cursor	*cursor_list_init(int n_players)
 		if (!(cursor = cursor_list_new(position, i + 1, i + 1)))
 		{
 			cursor_list_free(cursor_list);
-			exit(1);
+			check_error("Cursor list", "bad malloc");
 		}
 		position += gap;
 		cursor_list = cursor_list_add(cursor_list, cursor);

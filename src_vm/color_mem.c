@@ -18,7 +18,8 @@ unsigned char	*color_mem_init(int n_players, t_champ *champs)
 	int				pos;
 	unsigned char	*color_mem;
 
-	color_mem = mem_buff_init();
+	if (!(color_mem = mem_buff_init()))
+		return (NULL);
 	i = 0;
 	pos = 0;
 	while (i < n_players)

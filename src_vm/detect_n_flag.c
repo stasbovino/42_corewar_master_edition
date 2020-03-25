@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   detect_n_flag.c                                    :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: student <marvin@42.fr>                     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/25 12:33:01 by student           #+#    #+#             */
-/*   Updated: 2020/03/25 12:33:12 by student          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "corewar.h"
 
 static int	check_param(char *argv)
@@ -37,10 +25,13 @@ static int	check_param(char *argv)
 
 static void	set_n(t_flags *flags, char *tmp, int num, int i)
 {
-	if (flags->order[num - 1] == 0)
-		flags->order[num - 1] = i + 2;
-	else
-		free_and_usage(tmp);
+	if (num <= MAX_PLAYERS && num >= 1)
+	{
+		if (flags->order[num - 1] == 0)
+			flags->order[num - 1] = i + 2;
+		else
+			free_and_usage(tmp);
+	}
 	tmp[i] = 1;
 	tmp[i + 1] = 1;
 }
@@ -61,10 +52,7 @@ void		detect_n(int argc, char **argv, t_flags *flags, char *tmp)
 			if (i + 2 < argc && check_param(argv[i + 1]))
 			{
 				num = ft_atoi(argv[i + 1]);
-				if (num <= MAX_PLAYERS && num >= 1)
-					set_n(flags, tmp, num, i);
-				else
-					free_and_usage(tmp);
+				set_n(flags, tmp, num, i);
 			}
 			i++;
 		}

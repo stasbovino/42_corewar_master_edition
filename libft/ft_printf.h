@@ -6,13 +6,14 @@
 /*   By: pstein <pstein@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 18:54:08 by pstein            #+#    #+#             */
-/*   Updated: 2020/03/24 12:54:46 by sts              ###   ########.fr       */
+/*   Updated: 2020/03/24 15:54:12 by sts              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
+# include "libft.h"
 # include <stdarg.h>
 # include <unistd.h>
 # include <ctype.h>
@@ -71,6 +72,7 @@ typedef struct				s_flags
 ** -----------------------ft_printf-----------------------------------
 */
 
+int							ft_printf(const char *format, ...);
 int							print_buff(char buff[4096], int *i, int fd);
 
 /*
@@ -222,7 +224,7 @@ char						*make_char(char c);
 ** -----------------------colors-----------------------------------
 */
 
-int							init_color(char **str, int color, int len);
+int							init_col(char **str, int color, int len);
 int							color_check(char **str, char buff[4096], int *b_i);
 int							ft_cmp(const char *s1, const char *s2, size_t n);
 

@@ -6,7 +6,7 @@
 /*   By: student <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 12:04:48 by student           #+#    #+#             */
-/*   Updated: 2020/03/25 12:07:03 by student          ###   ########.fr       */
+/*   Updated: 2020/03/25 05:15:41 by sts              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ int			main(int argc, char **argv)
 	int				winner;
 
 	init_champs(champs, &flags, argc, argv);
-	mem = mem_buff_init();
+	if (!(mem = mem_buff_init()))
+		check_error("Battlefield", "bad malloc");
 	init_vm(mem, champs, flags.count);
 	cursor_list = cursor_list_init(flags.count);
 	introduce(champs, flags.count);

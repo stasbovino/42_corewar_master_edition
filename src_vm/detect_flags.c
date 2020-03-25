@@ -6,7 +6,7 @@
 /*   By: student <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 12:32:57 by student           #+#    #+#             */
-/*   Updated: 2020/03/25 12:33:15 by student          ###   ########.fr       */
+/*   Updated: 2020/03/25 05:00:46 by sts              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,8 @@ void		detect_flags(t_flags *flags, int argc, char **argv)
 	int		num;
 
 	i = 1;
-	tmp = ft_strnew(argc);
+	if (!(tmp = ft_strnew(argc)))
+		check_error("flags detection:", "malloc error");
 	init_flags(flags);
 	detect_dump_vis(argc, argv, flags, tmp);
 	detect_n(argc, argv, flags, tmp);
