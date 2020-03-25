@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   load_cmd_info.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: student <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/25 15:35:27 by student           #+#    #+#             */
+/*   Updated: 2020/03/25 15:35:29 by student          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
 static int	number_of_args(unsigned char cmd)
@@ -19,19 +31,26 @@ static int	number_of_args(unsigned char cmd)
 	return (1);
 }
 
-static int	is_right_args(unsigned char cmd, unsigned char a1, unsigned char a2, unsigned char a3)
+static int	is_right_args(unsigned char cmd,
+			unsigned char a1, unsigned char a2, unsigned char a3)
 {
-	if ((cmd == 0x02 || cmd == 0x0d) && (a1 == DIR_CODE || a1 == IND_CODE) && a2 == REG_CODE)
+	if ((cmd == 0x02 || cmd == 0x0d) &&
+			(a1 == DIR_CODE || a1 == IND_CODE) && a2 == REG_CODE)
 		return (2);
-	else if (cmd == 0x03 && (a2 == REG_CODE || a2 == IND_CODE) && a1 == REG_CODE)
+	else if (cmd == 0x03 && (a2 == REG_CODE || a2 == IND_CODE)
+			&& a1 == REG_CODE)
 		return (2);
-	else if ((cmd == 0x05 || cmd == 0x04) && a1 == REG_CODE && a2 == REG_CODE && a3 == REG_CODE)
+	else if ((cmd == 0x05 || cmd == 0x04) && a1 == REG_CODE
+			&& a2 == REG_CODE && a3 == REG_CODE)
 		return (3);
-	else if ((cmd == 0x06 || cmd == 0x07 || cmd == 0x08) && a1 != 0 && a2 != 0 && a3 == REG_CODE)
+	else if ((cmd == 0x06 || cmd == 0x07 || cmd == 0x08) &&
+			a1 != 0 && a2 != 0 && a3 == REG_CODE)
 		return (3);
-	else if ((cmd == 0x0a || cmd == 0x0e) && a1 != 0 && (a2 == REG_CODE || a2 == DIR_CODE) && a3 == REG_CODE)
+	else if ((cmd == 0x0a || cmd == 0x0e) && a1 != 0 &&
+			(a2 == REG_CODE || a2 == DIR_CODE) && a3 == REG_CODE)
 		return (3);
-	else if (cmd == 0x0b && a1 == REG_CODE && a2 != 0 && (a3 == REG_CODE || a3 == DIR_CODE))
+	else if (cmd == 0x0b && a1 == REG_CODE &&
+			a2 != 0 && (a3 == REG_CODE || a3 == DIR_CODE))
 		return (3);
 	else if (cmd == 0x10 && a1 == REG_CODE)
 		return (1);
@@ -50,7 +69,8 @@ static int	find_t_dir_size(unsigned char cmd)
 	return (2);
 }
 
-int			load_cmd_info(t_cmd_info *info, unsigned char *mem, t_cursor *cursor)
+int			load_cmd_info(t_cmd_info *info,
+			unsigned char *mem, t_cursor *cursor)
 {
 	int	temp_pos;
 

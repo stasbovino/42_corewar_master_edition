@@ -6,7 +6,7 @@
 /*   By: student <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 12:38:11 by student           #+#    #+#             */
-/*   Updated: 2020/03/25 12:56:26 by student          ###   ########.fr       */
+/*   Updated: 2020/03/25 17:31:01 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,17 @@ void		cmd_st(unsigned char *mem, t_cursor *cursor,
 		cmd_st_if_reg(mem, pos, cursor, t_reg1);
 }
 
+static void	cmd_sti_color(t_game_info *game_info, t_cursor *cursor,
+		long int arg_info2, long int arg_info3)
+{
+	if (game_info->color_mem)
+		change_color_mem(
+			correct_pos(cursor->position + ((arg_info2 + arg_info3) % IDX_MOD)),
+			4,
+			game_info->color_mem,
+			cursor->player_id);
+}
+
 void		cmd_sti(unsigned char *mem, t_cursor *cursor,
 		t_cmd_info *cmd_info, t_game_info *game_info)
 {
@@ -59,7 +70,10 @@ void		cmd_sti(unsigned char *mem, t_cursor *cursor,
 	long int		arg_info3;
 	unsigned char	t_reg;
 	int				pos;
+	t_mem_cursor	mc;
 
+	mc.cursor = cursor;
+	mc.mem = mem;
 	pos = cursor->position;
 	pos += 1;
 	pos %= MEM_SIZE;
@@ -68,15 +82,12 @@ void		cmd_sti(unsigned char *mem, t_cursor *cursor,
 		return ;
 	pos += 1;
 	pos %= MEM_SIZE;
-	if (!load_arg_info2(mem, cmd_info->arg2, &arg_info2, &pos, cursor))
+	if (!load_arg_info2(&mc, cmd_info->arg2, &arg_info2, &pos))
 		return ;
-	if (!load_arg_info2(mem, cmd_info->arg3, &arg_info3, &pos, cursor))
+	if (!load_arg_info2(&mc, cmd_info->arg3, &arg_info3, &pos))
 		return ;
 	load_from_reg(cursor->r[t_reg], mem,
 			correct_pos(cursor->position +
 			((arg_info2 + arg_info3) % IDX_MOD)));
-	if (game_info->color_mem)
-		change_color_mem(
-			correct_pos(cursor->position + ((arg_info2 + arg_info3) % IDX_MOD)),
-			4, game_info->color_mem, cursor->player_id);
+	cmd_sti_color(game_info, cursor, arg_info2, arg_info3);
 }

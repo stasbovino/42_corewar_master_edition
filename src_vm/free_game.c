@@ -1,6 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free_game.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: student <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/25 15:33:10 by student           #+#    #+#             */
+/*   Updated: 2020/03/25 15:33:12 by student          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
-void	free_game(t_cursor **cursor_list, t_game_info *game, unsigned char **mem)
+void	free_game(t_cursor **cursor_list,
+		t_game_info *game, unsigned char **mem)
 {
 	if (game->visual.win_field != NULL)
 		delwin(game->visual.win_field);

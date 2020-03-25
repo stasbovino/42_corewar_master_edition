@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cycle.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: student <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/25 15:31:00 by student           #+#    #+#             */
+/*   Updated: 2020/03/25 15:31:02 by student          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
 static int	command_delay(unsigned char cmd)
@@ -31,7 +43,7 @@ int			do_cycle(unsigned char *mem, t_game_info *game_info)
 	if (!cursor_list)
 		return (0);
 	while (cursor_list)
-	{		
+	{
 		if (cursor_list->delay == 0)
 		{
 			cursor_list->command = mem[cursor_list->position];
