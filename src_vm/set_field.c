@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   set_field.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: student <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/03/27 18:55:10 by student           #+#    #+#             */
+/*   Updated: 2020/03/27 18:55:25 by student          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "corewar.h"
 
 static int	is_cur_pos(t_cursor *cur, int index)
@@ -11,22 +23,22 @@ static int	is_cur_pos(t_cursor *cur, int index)
 	return (0);
 }
 
-static void set_separator(WINDOW *field, int *x, int *y, int width)
+static void	set_separator(WINDOW *field, int *x, int *y, int width)
 {
 	if (*x + 3 < width - 1)
-		{
-			mvwprintw(field, *y, *x, " ");
-			*x += 1;
-		}
-		else
-		{
-			mvwprintw(field, *y, *x, "\n");
-			(*y)++;
-			*x = 1;
-		}
+	{
+		mvwprintw(field, *y, *x, " ");
+		*x += 1;
+	}
+	else
+	{
+		mvwprintw(field, *y, *x, "\n");
+		(*y)++;
+		*x = 1;
+	}
 }
 
-static void set_vars(int *width, int *x, int *y, int *i)
+static void	set_vars(int *width, int *x, int *y, int *i)
 {
 	*width = 194;
 	*x = 1;
@@ -63,11 +75,11 @@ void		set_field(WINDOW *field, t_cursor *cursor, unsigned char *mem,
 		color = set_color(cursor, i, color_mem);
 		if (x + 2 < width - 1)
 		{
-				wattron(field, COLOR_PAIR(color));
+			wattron(field, COLOR_PAIR(color));
 			mvwprintw(field, y, x, "%.2hhx", mem[i]);
 			wattroff(field, COLOR_PAIR(color));
 			i++;
-			x+=2;
+			x += 2;
 		}
 		set_separator(field, &x, &y, width);
 	}
