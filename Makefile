@@ -6,7 +6,7 @@
 #    By: gwyman-m <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/09/28 18:26:57 by gwyman-m          #+#    #+#              #
-#    Updated: 2020/03/25 05:18:40 by sts              ###   ########.fr        #
+#    Updated: 2020/03/27 17:45:14 by sts              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ VM_CFILES= check.c cmd_add_sub.c cmd_and_or_xor.c cmd_fork.c cmd_funcs.c \
 		   draw.c error_usage.c fill.c game.c game_with_vis.c \
 		   init_champs.c init_ncurses.c init_vm.c main.c mem_buff_print.c \
 		   memory_buffer.c valid.c color_mem.c free_game.c perform_command.c \
-		   load_cmd_info.c count_shift.c \
+		   load_cmd_info.c count_shift.c set_info.c set_field.c
 
 
 ASM_OFILES= $(ASM_CFILES:%.c=%.o)

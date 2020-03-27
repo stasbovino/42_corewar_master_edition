@@ -6,7 +6,7 @@
 /*   By: pstein <pstein@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/19 18:54:08 by pstein            #+#    #+#             */
-/*   Updated: 2020/03/24 15:54:12 by sts              ###   ########.fr       */
+/*   Updated: 2020/03/27 13:45:17 by sts              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # include <ctype.h>
 # include <stdlib.h>
 # include <fcntl.h>
+# include <wchar.h>
+# include <inttypes.h>
 
 # define CONVERSIONS	"sScCpdDioOuUxXfFbB%"
 # define FLAGS			"#0-+ .'123456789hlLjz*"

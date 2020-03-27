@@ -6,7 +6,7 @@
 /*   By: gwyman-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 17:23:19 by gwyman-m          #+#    #+#             */
-/*   Updated: 2020/03/25 18:12:28 by student          ###   ########.fr       */
+/*   Updated: 2020/03/27 17:45:01 by sts              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -237,6 +237,19 @@ int					do_check(t_cursor **cursor_list,
 */
 
 void				draw(t_game_info *game);
+
+/*
+**	set_field.c
+*/
+
+void				set_field(WINDOW *field, t_cursor *cursor,
+		unsigned char *mem, unsigned char *color_mem);
+
+/*
+**	set_info.c
+*/
+
+void				set_info(WINDOW *info, t_game_info *game, t_champ *champs);
 
 /*
 **	init_ncurses.c
