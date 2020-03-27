@@ -6,7 +6,7 @@
 /*   By: gwyman-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 17:23:19 by gwyman-m          #+#    #+#             */
-/*   Updated: 2020/03/27 17:45:01 by sts              ###   ########.fr       */
+/*   Updated: 2020/03/27 19:10:10 by sts              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ typedef struct		s_flags
 	int				dump_size;
 	int				order[MAX_PLAYERS];
 	int				count;
-	int				verbose_level;
 	char			visual;
 	char			aff;
 }					t_flags;

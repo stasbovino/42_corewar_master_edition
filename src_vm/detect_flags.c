@@ -6,7 +6,7 @@
 /*   By: student <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 12:32:57 by student           #+#    #+#             */
-/*   Updated: 2020/03/25 05:00:46 by sts              ###   ########.fr       */
+/*   Updated: 2020/03/27 19:06:04 by sts              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ static void	init_flags(t_flags *flags)
 		flags->order[i] = 0;
 		i++;
 	}
-	flags->verbose_level = 0;
 	flags->visual = 0;
 	flags->aff = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: student <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 12:38:11 by student           #+#    #+#             */
-/*   Updated: 2020/03/25 17:31:01 by student          ###   ########.fr       */
+/*   Updated: 2020/03/27 20:12:20 by sts              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void		cmd_st(unsigned char *mem, t_cursor *cursor,
 				correct_pos(cursor->position + (t_ind % IDX_MOD)));
 		if (game_info->color_mem)
 			change_color_mem(correct_pos(cursor->position + (t_ind % IDX_MOD)),
-					4, game_info->color_mem, cursor->player_id);
+					REG_SIZE, game_info->color_mem, cursor->player_id);
 	}
 	else if (cmd_info->arg2 == REG_CODE)
 		cmd_st_if_reg(mem, pos, cursor, t_reg1);
@@ -58,7 +58,7 @@ static void	cmd_sti_color(t_game_info *game_info, t_cursor *cursor,
 	if (game_info->color_mem)
 		change_color_mem(
 			correct_pos(cursor->position + ((arg_info2 + arg_info3) % IDX_MOD)),
-			4,
+			REG_SIZE,
 			game_info->color_mem,
 			cursor->player_id);
 }

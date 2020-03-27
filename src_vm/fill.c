@@ -6,13 +6,13 @@
 /*   By: student <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 12:24:34 by student           #+#    #+#             */
-/*   Updated: 2020/03/25 12:25:40 by student          ###   ########.fr       */
+/*   Updated: 2020/03/27 19:34:48 by sts              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
 
-int		fill_sizeof_code(unsigned char data[])
+static int	fill_sizeof_code(unsigned char data[])
 {
 	int				i;
 	unsigned char	*size;
@@ -33,7 +33,7 @@ int		fill_sizeof_code(unsigned char data[])
 	return (size_int);
 }
 
-void	check_errno(int fd, char *file)
+static void	check_errno(int fd, char *file)
 {
 	if (errno)
 	{
@@ -42,7 +42,7 @@ void	check_errno(int fd, char *file)
 	}
 }
 
-void	fill_champ(t_champ *champ, char *file)
+void		fill_champ(t_champ *champ, char *file)
 {
 	int				fd;
 	unsigned char	data[DATA_SIZE];

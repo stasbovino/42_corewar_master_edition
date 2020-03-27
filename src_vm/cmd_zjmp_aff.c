@@ -6,7 +6,7 @@
 /*   By: student <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 13:00:23 by student           #+#    #+#             */
-/*   Updated: 2020/03/25 13:01:31 by student          ###   ########.fr       */
+/*   Updated: 2020/03/27 19:58:02 by sts              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ int			cmd_zjmp(unsigned char *mem, t_cursor *cursor)
 		t_dir2 = get_t_dir2(mem, cursor->position) % IDX_MOD;
 		if (LOG_MODE)
 			ft_printf("zjmp Yes! %d + %d\n", cursor->position, t_dir2);
-		cursor_change_position(cursor,
-				get_t_dir2(mem, cursor->position) % IDX_MOD);
+		cursor_change_position(cursor, t_dir2);
 		if (LOG_MODE)
 			ft_printf("_ = %d\n", cursor->position);
 		return (0);
