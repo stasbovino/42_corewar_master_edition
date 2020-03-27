@@ -6,7 +6,7 @@
 /*   By: student <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 12:20:45 by student           #+#    #+#             */
-/*   Updated: 2020/03/25 05:04:10 by sts              ###   ########.fr       */
+/*   Updated: 2020/03/27 17:12:38 by student          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ int			start_game(unsigned char *mem,
 			game.live_count = 0;
 			game.check_counter = 0;
 		}
-		if (flags->for_dump != -1 && game.current_cycle == flags->for_dump)
+		if ((flags->for_dump != -1 && game.current_cycle == flags->for_dump)
+				|| flags->for_dump == 0)
 		{
 			mem_buff_print(mem, flags->dump_size);
 			free_game(cursor_list, &game, &mem);
