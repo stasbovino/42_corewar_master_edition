@@ -6,22 +6,11 @@
 /*   By: student <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/27 18:55:10 by student           #+#    #+#             */
-/*   Updated: 2020/03/27 18:55:25 by student          ###   ########.fr       */
+/*   Updated: 2020/03/28 23:13:26 by sts              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "corewar.h"
-
-static int	is_cur_pos(t_cursor *cur, int index)
-{
-	while (cur)
-	{
-		if (cur->position == index)
-			return (cur->player_id + 1);
-		cur = cur->next;
-	}
-	return (0);
-}
 
 static void	set_separator(WINDOW *field, int *x, int *y, int width)
 {
@@ -50,13 +39,40 @@ static int	set_color(t_cursor *cursor, int i, unsigned char *color_mem)
 {
 	int color;
 
-	if (cursor && (color = is_cur_pos(cursor, i)))
-		color = (color >= 6) ? 6 : color;
-	else if (color_mem[i] != 0)
+	if (color_mem[i] != 0)
 		color = (color_mem[i] >= 6) ? 16 : color_mem[i] + 11;
 	else
 		color = 20;
-	return (color);
+	return (COLOR_PAIR(color));
+}
+
+static void	set_cursor_color(WINDOW *field, t_cursor *cursor, 
+		unsigned char *mem, unsigned char *color_mem)
+{
+	int i;
+	int y;
+	int x;
+	int width;
+	int color;
+
+	width = 194;
+	y = 1;
+	x = 1;
+	while (cursor)
+	{
+		i = cursor->position;
+		if (cursor->player_id > 6)
+			color = 6;
+		else
+			color = cursor->player_id + 1;
+		color = COLOR_PAIR(color);
+		wattron(field, color);
+		y = i / 64 + 1;
+		x = i % 64 * 3 + 1;
+		mvwprintw(field, y, x, "%.2hhx", mem[i]);
+		wattroff(field, color);
+		cursor = cursor->next;
+	}
 }
 
 void		set_field(WINDOW *field, t_cursor *cursor, unsigned char *mem,
@@ -68,21 +84,21 @@ void		set_field(WINDOW *field, t_cursor *cursor, unsigned char *mem,
 	int width;
 	int color;
 
-	werase(field);
 	set_vars(&width, &x, &y, &i);
 	while (i < MEM_SIZE)
 	{
 		color = set_color(cursor, i, color_mem);
 		if (x + 2 < width - 1)
 		{
-			wattron(field, COLOR_PAIR(color));
+			wattron(field, color);
 			mvwprintw(field, y, x, "%.2hhx", mem[i]);
-			wattroff(field, COLOR_PAIR(color));
+			wattroff(field, color);
 			i++;
 			x += 2;
 		}
 		set_separator(field, &x, &y, width);
 	}
+	set_cursor_color(field, cursor, mem, color_mem);
 	box(field, 0, 0);
 	wrefresh(field);
 }

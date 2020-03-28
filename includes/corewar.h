@@ -6,7 +6,7 @@
 /*   By: gwyman-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/03 17:23:19 by gwyman-m          #+#    #+#             */
-/*   Updated: 2020/03/27 19:10:10 by sts              ###   ########.fr       */
+/*   Updated: 2020/03/28 23:11:34 by sts              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,7 +155,6 @@ void				init_vm(unsigned char *mem, t_champ *champs, int count);
 **	fill.c
 */
 
-int					fill_sizeof_code(unsigned char data[]);
 void				fill_champ(t_champ *champ, char *file);
 void				check_valid_data(unsigned char data[], char *file);
 
