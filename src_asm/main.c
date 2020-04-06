@@ -6,7 +6,7 @@
 /*   By: pstein <pstein@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 12:51:31 by pstein            #+#    #+#             */
-/*   Updated: 2020/03/15 20:57:18 by pstein           ###   ########.fr       */
+/*   Updated: 2020/04/06 10:05:04 by sts              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,6 @@ int	main(int argc, char **argv)
 	else if (argc == 2 && is_cor_file(argv[1]))
 		disassembler(argv[1]);
 	else
-		ft_printf("usage: ./assembler map");
+		ft_printf("usage: ./assembler map\n");
 	return (0);
 }

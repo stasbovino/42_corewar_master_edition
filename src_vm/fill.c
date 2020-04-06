@@ -6,7 +6,7 @@
 /*   By: student <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/25 12:24:34 by student           #+#    #+#             */
-/*   Updated: 2020/03/27 19:34:48 by sts              ###   ########.fr       */
+/*   Updated: 2020/04/06 10:50:42 by sts              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static int	fill_sizeof_code(unsigned char data[])
 		s[3 - i] = size[i];
 		i++;
 	}
-	if (size_int > CHAMP_MAX_SIZE || size_int < 0)
+	if (size_int > CHAMP_MAX_SIZE || size_int <= 0)
 		return (-1);
 	return (size_int);
 }
